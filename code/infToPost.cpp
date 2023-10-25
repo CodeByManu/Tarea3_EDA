@@ -62,3 +62,29 @@ std::string infixToPostfix(std::string infix) {
     }
     return postfix;
 }
+
+float solver(std::string postfix){
+
+    std::stack<float> original;
+    float operando1;
+    float operando2;
+
+    for (int i = 0; i < postfix.length(); i++){
+
+        if (isOperand(postfix[i])) original.push(postfix[i] - '0');
+
+        else {
+            operando2 = original.top();
+            original.pop();
+            operando1 = original.top();
+            original.pop();
+
+            if (postfix[i] == '+') original.push(operando1 + operando2);
+            else if (postfix[i] == '-') original.push(operando1 - operando2);
+            else if (postfix[i] == '*') original.push(operando1 * operando2);
+            else if (postfix[i] == '/') original.push(operando1 / operando2);
+            else if (postfix[i] == '^') original.push(pow(operando1, operando2));
+        }
+    }
+    return original.top();
+}
