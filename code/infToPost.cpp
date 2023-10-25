@@ -7,6 +7,30 @@ bool isOperator(char c) {
     return false;
 }
 
+bool isNumber(char c) {
+    // for (int i = 0; i < c.length(); i ++){
+    //     if (!(c[i] >= '0' && c[i] <= '9')) {
+    //         return false;
+    //     }
+    // }
+    if (c >= '0' && c <= '9') {
+        return true;
+    }
+    return false;
+}
+
+bool isVar(std::string c){
+    for (int i = 0; i < c.length(); i ++){
+        if (!(c[i] >= 'a' && c[i] <= 'z')) {
+        return false;
+    }
+        if (!(c[i] >= 'A' && c[i] <= 'Z')) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool isOperand(char c) {
     if (c >= '0' && c <= '9') {
         return true;
@@ -63,7 +87,7 @@ std::string infixToPostfix(std::string infix) {
     return postfix;
 }
 
-float solver(std::string postfix){
+float solver(std::string postfix, std::map<char, int> variables){
 
     std::stack<float> original;
     float operando1;
@@ -71,7 +95,10 @@ float solver(std::string postfix){
 
     for (int i = 0; i < postfix.length(); i++){
 
-        if (isOperand(postfix[i])) original.push(postfix[i] - '0');
+        if (isOperand(postfix[i])){
+            if (isNumber(postfix[i])) original.push(postfix[i] - '0');
+            else original.push(variables[postfix[i]]);
+        }
 
         else {
             operando2 = original.top();
