@@ -34,3 +34,5 @@
 #nuestros
 build
 *.pdf
+CMakeLists.txt
+Makefile

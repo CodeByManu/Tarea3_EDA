@@ -2,6 +2,7 @@
 #include <stack>
 #include <map>
 #include <string>
+#include <math.h>
 
 bool isOperator(char c);
 bool isOperand(char c);
