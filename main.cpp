@@ -1,42 +1,49 @@
-#include <iostream>
-#include <map>
+#include <algorithm>
 #include "code/infToPost.hpp"
 
 using namespace std;
 
 int main(){
-    string respuesta;
+    string input;
     string sub;
-    float ans;
+    float ans = 0;
     int index;
+    int pos;
     map<char, int> variables;
 
     cout << "====== CALCULADORA INTERACTIVA ======" << endl;
 
     while(1){
+        cout << "$ ";
+        getline(cin, input);
 
-        cin >> respuesta;
+        if (input == "tree");
+        else if(input == "FIN") break;
 
-        // respuesta.erase(remove(respuesta.begin(), respuesta.end(), ' '), respuesta.end());
+        
+        while ((pos = input.find("ans")) != string::npos) {
+            input.replace(pos, 3, to_string(ans));
+            pos = input.find("ans", pos + to_string(ans).length());
+        }
 
-        index = respuesta.find("=");
 
-        if (index != -1){
-            string variable = respuesta.substr(0, index);
-            int var = stoi(respuesta.substr(index + 1));
+        input.erase(remove(input.begin(), input.end(), ' '), input.end());
+        
+        cout << input << endl;
+
+        if ((input.find("=") != string::npos)){
+            string variable = input.substr(0, index);
+            cout << "test" << endl;
+            int var = stoi(input.substr(index + 1));
             variables[variable[0]] = var;
-            cout << variables['x'] << endl;
         }
 
 
         else{
-            cout << respuesta << endl;
-            ans = solver(infixToPostfix(respuesta), variables);
+            ans = solver(infixToPostfix(input), variables);
             cout << ans << endl;
         }
 
-        // else if (respuesta == "tree");
-        // else if(respuesta == "FIN") break;
 
 
 

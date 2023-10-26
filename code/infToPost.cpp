@@ -8,11 +8,6 @@ bool isOperator(char c) {
 }
 
 bool isNumber(char c) {
-    // for (int i = 0; i < c.length(); i ++){
-    //     if (!(c[i] >= '0' && c[i] <= '9')) {
-    //         return false;
-    //     }
-    // }
     if (c >= '0' && c <= '9') {
         return true;
     }
