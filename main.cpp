@@ -1,5 +1,6 @@
+#include <iostream>
 #include <algorithm>
-#include "code/infToPost.hpp"
+#include "code/hfiles.hpp"
 
 using namespace std;
 

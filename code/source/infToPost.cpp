@@ -1,3 +1,4 @@
+#include <math.h>
 #include "infToPost.hpp"
 
 bool isOperator(std::string c) {
@@ -127,8 +128,4 @@ std::string solver(std::stack<std::string> postfix, std::map<std::string, std::s
         xiftsop.pop();
     }
     return original.top();
-}
-
-void bTree() {
-    
 }
