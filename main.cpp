@@ -22,8 +22,6 @@ int main(){
     stack<string> postfix;
     stack<string> xiftsop;
     ABB tree;
-    ABB oldTree;
-    oldTree.insert("-1");
 
     cout << "====== CALCULADORA INTERACTIVA ======" << endl;
 
@@ -47,12 +45,8 @@ int main(){
             variables[variable] = valor;
             continue;
         }
+
         while (!xiftsop.empty()) xiftsop.pop();
-        
-        // while ((pos = input.find("ans")) != string::npos) {
-        //     input.replace(pos, 3, ans);
-        //     pos = input.find("ans", pos + ans.length());
-        // }
 
         while ((pos = input.find(" ", qix)) != string::npos) {
             buffer = input.substr(qix, pos - qix);
@@ -72,15 +66,7 @@ int main(){
         printAns = stof(ans);
         cout.precision(5);
         cout << "$ " << printAns<< endl;
-        
-
-
-        // while (!xiftsop.empty()) {
-        //     cout << xiftsop.top() << endl;
-        //     xiftsop.pop();
-        // }
-
-        // while (!postfix.empty()) postfix.pop();
+     
         while (!infix.empty()) infix.pop();
     }
 
