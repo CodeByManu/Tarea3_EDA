@@ -3,21 +3,27 @@
 #include "code/hfiles.hpp"
 
 using namespace std;
+using namespace trees;
 
 int main(){
     string input;
     string ans = "0";
-    float printAns;
     string variable;
     string valor;
     string buffer;
+
+    float printAns;
     int index;
     int pos;
     int qix;
+
     map<string, string> variables;
     queue<string> infix;
     stack<string> postfix;
-
+    stack<string> xiftsop;
+    ABB tree;
+    ABB oldTree;
+    oldTree.insert("-1");
 
     cout << "====== CALCULADORA INTERACTIVA ======" << endl;
 
@@ -26,16 +32,22 @@ int main(){
 
         cout << "$ ";
         getline(cin, input);
-
-        if (input == "tree");
-        else if(input == "FIN") break;
-
-        if ((index = input.find("=")) != string::npos) {
+        
+        if (input == "tree") {
+            tree = postfixToTree(xiftsop);
+            while (!xiftsop.empty()) xiftsop.pop();
+            tree = ABB();
+            continue;
+        }
+        else if (input == "FIN") {break;}
+        else if (input.size() == 0) continue;
+        else if ((index = input.find("=")) != string::npos) {
             variable = input.substr(0, index - 1);
             valor = input.substr(index + 2);
             variables[variable] = valor;
             continue;
         }
+        while (!xiftsop.empty()) xiftsop.pop();
         
         while ((pos = input.find("ans")) != string::npos) {
             input.replace(pos, 3, ans);
@@ -49,14 +61,26 @@ int main(){
         }
         infix.push(input.substr(qix));
 
-        postfix = infixToPostfixStack(infix);
+        postfix = infixToPostfix(infix);
 
-        ans = solver(postfix, variables);
+        while (!postfix.empty()) {
+            xiftsop.push(postfix.top());
+            postfix.pop();
+        }
+
+        ans = solver(xiftsop, variables);
         printAns = stof(ans);
         cout.precision(5);
-        cout << printAns<< endl;
+        cout << "$ " << printAns<< endl;
         
-        while (!postfix.empty()) postfix.pop();
+
+
+        // while (!xiftsop.empty()) {
+        //     cout << xiftsop.top() << endl;
+        //     xiftsop.pop();
+        // }
+
+        // while (!postfix.empty()) postfix.pop();
         while (!infix.empty()) infix.pop();
     }
 

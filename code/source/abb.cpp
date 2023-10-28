@@ -5,7 +5,7 @@
  *      Author: jsaavedr
  */
 
-#include "abb.hpp"
+#include "../hdir/abb.hpp"
 #include <iostream>
 
 namespace trees {
@@ -14,8 +14,12 @@ ABB::ABB():root(nullptr) {
 	// TODO Auto-generated constructor stub
 }
 
-void ABB::insert_rec(int val, ABBNode* node){
-	if (val < node->getData()){
+ABB::ABB(ABBNode* root1) {
+	root = root1;
+}
+
+void ABB::insert_rec(std::string val, ABBNode* node){
+	if (std::stof(val) < std::stof(node->getData())){
 		//LEFT
 		if (node->getLeft() == nullptr){
 			node->setLeft(new ABBNode(val));
@@ -37,7 +41,7 @@ void ABB::insert_rec(int val, ABBNode* node){
 	}
 }
 
-void ABB::insert(int val){
+void ABB::insert(std::string val){
 	if (root == nullptr){
 		root = new ABBNode(val);
 	}
@@ -46,14 +50,14 @@ void ABB::insert(int val){
 	}
 }
 
-ABBNode* ABB::find_rec(int val, ABBNode* node){
+ABBNode* ABB::find_rec(std::string val, ABBNode* node){
 	ABBNode* ans = nullptr;
 
 	if (node->getData() == val){
 		ans = node;
 	}
 	else{
-		if (val < node->getData()){
+		if (std::stof(val) < std::stof(node->getData())){
 			ans = find_rec(val, node->getLeft());
 		}
 		else{
@@ -64,7 +68,7 @@ ABBNode* ABB::find_rec(int val, ABBNode* node){
 	return ans;
 }
 
-ABBNode* ABB::find(int val){
+ABBNode* ABB::find(std::string val){
 	ABBNode* ans = nullptr;
 	ans = find_rec(val, root);
 	return ans;

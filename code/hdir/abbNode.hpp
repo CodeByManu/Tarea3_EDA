@@ -8,24 +8,26 @@
 #ifndef ABBNODE_HPP_
 #define ABBNODE_HPP_
 
+#include <string>
+
 namespace trees {
 
 class ABBNode {
 private:
 	ABBNode* ptrLeft;
-	int data;
+	std::string data;
 	ABBNode* ptrRight;
 	int size;
 public:
 	ABBNode();
-	ABBNode(int val);
+	ABBNode(std::string val);
 	void setLeft(ABBNode* node);
 	void setRight(ABBNode* node);
-	void setData(int val);
+	void setData(std::string val);
 	void setSize(int s);
 	ABBNode* getLeft();
 	ABBNode* getRight();
-	int getData();
+	std::string getData();
 	int getSize();
 	virtual ~ABBNode();
 };

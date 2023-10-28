@@ -1,5 +1,5 @@
 #include <math.h>
-#include "infToPost.hpp"
+#include "../hdir/infToPost.hpp"
 
 bool isOperator(std::string c) {
     if (c == "+" || c == "-" || c == "*" || c == "/" || c == "^") {
@@ -64,11 +64,13 @@ int getPrecedence(std::string c) {
     return -1;
 }
 
-std::stack<std::string> infixToPostfixStack(std::queue<std::string> infix) {
+std::stack<std::string> infixToPostfix(std::queue<std::string> infix) {
     std::stack<std::string> s;
     std::stack<std::string> postfix;
+    std::string c;
+
     while(!infix.empty()) {
-        std::string c = infix.front();
+        c = infix.front();
         if (isNumber(c)) {
             postfix.push(c);
         } else if (isVar(c)) {
@@ -97,33 +99,26 @@ std::stack<std::string> infixToPostfixStack(std::queue<std::string> infix) {
     return postfix;
 }
 
-std::string solver(std::stack<std::string> postfix, std::map<std::string, std::string> variables){
+std::string solver(std::stack<std::string> xiftsop, std::map<std::string, std::string> variables){
     std::stack<std::string> original;
-    std::stack<std::string> xiftsop;
+    std::string c;
     float operando1;
     float operando2;
-    
-    while(!postfix.empty()) {
-        xiftsop.push(postfix.top());
-        postfix.pop();
-    }
 
     while (!xiftsop.empty()) {
-        if (isNumber(xiftsop.top())) original.push(xiftsop.top());
-
-        else if (isVar(xiftsop.top())) original.push(variables[xiftsop.top()]);
-
+        c = xiftsop.top();
+        if (isNumber(c)) original.push(c);
+        else if (isVar(c)) original.push(variables[c]);
         else {
             operando2 = std::stof(original.top());
             original.pop();
             operando1 = std::stof(original.top());
             original.pop();
-
-            if (xiftsop.top() == "+") original.push(std::to_string(operando1 + operando2));
-            else if (xiftsop.top() == "-") original.push(std::to_string(operando1 - operando2));
-            else if (xiftsop.top() == "*") original.push(std::to_string(operando1 * operando2));
-            else if (xiftsop.top() == "/") original.push(std::to_string(operando1 / operando2));
-            else if (xiftsop.top() == "^") original.push(std::to_string(pow(operando1, operando2)));
+            if (c == "+") original.push(std::to_string(operando1 + operando2));
+            else if (c == "-") original.push(std::to_string(operando1 - operando2));
+            else if (c == "*") original.push(std::to_string(operando1 * operando2));
+            else if (c == "/") original.push(std::to_string(operando1 / operando2));
+            else if (c == "^") original.push(std::to_string(pow(operando1, operando2)));
         }
         xiftsop.pop();
     }

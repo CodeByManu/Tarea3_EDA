@@ -5,16 +5,16 @@
  *      Author: jsaavedr
  */
 
-#include "abbNode.hpp"
+#include "../hdir/abbNode.hpp"
 
 namespace trees {
 
 ABBNode::ABBNode():
-		ptrLeft(nullptr), data(-1), ptrRight(nullptr) {
+		ptrLeft(nullptr), data("-1"), ptrRight(nullptr) {
 	// TODO Auto-generated constructor stub
 }
 
-ABBNode::ABBNode(int val):
+ABBNode::ABBNode(std::string val):
 		ptrLeft(nullptr), data(val), ptrRight(nullptr){
 
 }
@@ -27,7 +27,7 @@ void ABBNode::setRight(ABBNode* node){
 	ptrRight = node;
 }
 
-void ABBNode::setData(int val){
+void ABBNode::setData(std::string val){
 	data = val;
 }
 
@@ -43,7 +43,7 @@ ABBNode* ABBNode::getRight(){
 	return ptrRight;
 }
 
-int ABBNode::getData(){
+std::string ABBNode::getData(){
 	return data;
 }
 

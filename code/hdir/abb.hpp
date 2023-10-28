@@ -17,10 +17,11 @@ private:
 	ABBNode* root;
 public:
 	ABB();
-	void insert_rec(int val, ABBNode* node);
-	void insert(int val);
-	ABBNode* find_rec(int val, ABBNode* node);
-	ABBNode* find(int val);
+	ABB(ABBNode* node);
+	void insert_rec(std::string val, ABBNode* node);
+	void insert(std::string val);
+	ABBNode* find_rec(std::string val, ABBNode* node);
+	ABBNode* find(std::string val);
 	void traverse_rec(ABBNode* node, int level);
 	void traverse();
 	void showASC_rec(ABBNode* node);
