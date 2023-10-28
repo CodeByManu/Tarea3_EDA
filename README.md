@@ -7,7 +7,7 @@ Este README da instrucciones para configurar y correr el código de la Tarea 3. 
 
 Asegurarse de tener los siguientes directorios y archivos (algunos sacados del [repositorio del ramo](https://github.com/jmsaavedrar/eda_cppal)) al mismo nivel:
 
-- `code`: Contiene todos los archivos que están en las carpetas `include/trees` y `src`, dentro del directorio `abb` del repositorio. También se encuentran los archivos `infToPost.{hpp, cpp}`. Todos los archivos `.hpp` se encuentran en un sub-directorio llamado `hdir`, y los `.cpp` en otro llamado `source`. A la par de ambos se encuentra el archivo `hfiles.hpp`.
+- `code`: Contiene todos los archivos que están en las carpetas `include/trees` y `src`, dentro del directorio `abb` del repositorio. También se encuentran los archivos `infToPost.{hpp, cpp}` y `postToTree.{hpp, cpp}`. Todos los archivos `.hpp` se encuentran en un sub-directorio llamado `hdir`, y los `.cpp` en otro llamado `source`. A la par de ambos sub-directorios se encuentra un archivo `hfiles.hpp`.
 - `CMakeLists.txt`: Archivo para realizar compilazión a través de CMake.
 - `build`: Directorio para guardar archivos de compilación de CMake.
 - `main.cpp`: Archivo de ejecución principal.
