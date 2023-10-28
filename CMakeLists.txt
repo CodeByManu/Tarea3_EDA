@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #add_subdirectory(src)
 #add_subdirectory(tests)
 
-add_executable(test main.cpp code/infToPost.cpp)
+add_executable(test main.cpp code/source/infToPost.cpp code/source/abb.cpp code/source/abbNode.cpp code/source/postToTree.cpp)
 target_include_directories(test PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # add the executable

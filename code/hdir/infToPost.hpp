@@ -9,4 +9,4 @@ bool isVar(std::string c);
 bool isOperand(char c);
 int getPrecedence(std::string c);
 std::stack<std::string> infixToPostfix(std::queue<std::string> infix);
-std::string solver(std::stack<std::string> postfix, std::map<std::string, std::string>);
+std::string solver(std::stack<std::string> postfix, std::map<std::string, std::string> variables, std::string ans);

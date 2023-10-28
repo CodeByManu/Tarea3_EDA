@@ -99,7 +99,7 @@ std::stack<std::string> infixToPostfix(std::queue<std::string> infix) {
     return postfix;
 }
 
-std::string solver(std::stack<std::string> xiftsop, std::map<std::string, std::string> variables){
+std::string solver(std::stack<std::string> xiftsop, std::map<std::string, std::string> variables, std::string ans){
     std::stack<std::string> original;
     std::string c;
     float operando1;
@@ -107,6 +107,7 @@ std::string solver(std::stack<std::string> xiftsop, std::map<std::string, std::s
 
     while (!xiftsop.empty()) {
         c = xiftsop.top();
+        if (c == "ans") c = ans;
         if (isNumber(c)) original.push(c);
         else if (isVar(c)) original.push(variables[c]);
         else {

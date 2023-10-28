@@ -49,10 +49,10 @@ int main(){
         }
         while (!xiftsop.empty()) xiftsop.pop();
         
-        while ((pos = input.find("ans")) != string::npos) {
-            input.replace(pos, 3, ans);
-            pos = input.find("ans", pos + ans.length());
-        }
+        // while ((pos = input.find("ans")) != string::npos) {
+        //     input.replace(pos, 3, ans);
+        //     pos = input.find("ans", pos + ans.length());
+        // }
 
         while ((pos = input.find(" ", qix)) != string::npos) {
             buffer = input.substr(qix, pos - qix);
@@ -68,7 +68,7 @@ int main(){
             postfix.pop();
         }
 
-        ans = solver(xiftsop, variables);
+        ans = solver(xiftsop, variables, ans);
         printAns = stof(ans);
         cout.precision(5);
         cout << "$ " << printAns<< endl;
